@@ -16,24 +16,32 @@
 </head>
 <body>
   <div>
-    <h3>Akuzipik Wordbuilder</h3>
-    <select name="det" id="det">
-      <option>the</option>
-      <option>my</option>
-      <option>your</option>
-      <option>his/her/its</option>
-    </select>
-    <select name="num" id="num_select">
-      <option>one</option>
-      <option>two</option>
-      <option>3+</option>
-    </select>
-    <select name="base" id="base_select">
-      <option>person</option>
-      <option>dog</option>
-      <option>knife</option>
-      <option>boat</option>
-    </select>
+    <h1>Akuzipik Wordbuilder</h1>
+    <div id="phraseTypeChoices">
+      <input type="radio" id="np" name="phraseType" value="NP" checked>
+      <label for="np">Build a Noun Phrase</label><br>
+      <input type="radio" id="vp" name="phraseType" value="VP">
+      <label for="vp">Build a Verb Phrase</label><br>
+      <input type="radio" id="qp" name="phraseType" value="QP">
+      <label for="qp">Ask a Question</label><br>
+      <input type="radio" id="cp" name="phraseType" value="CP">
+      <label for="cp">Give a Command</label><br>
+    </div>
+    <div id="builderContainer">Akuzipik Phrase goes here</div>
+    <div id="dropdownContainer">
+      <div id="verbDropdowns" class="dropdowns" style="display:none;">
+        <select name="verb" id="vPerNumSelect"></select>
+        <select name="verb" id="vBaseSelect"></select>
+      </div>
+      <div id="nounDropdowns" class="dropdowns" style="display: block;">
+        <select name="noun" id="nCaseSelect"></select>
+        <select name="noun" id="nDetSelect"></select>
+        <select name="noun" id="nNumSelect"></select>
+        <select name="noun" id="nBaseSelect"></select>
+      </div>
+    </div>
   </div>
+  <script src="builder.js"></script>
+  <script src="dropdowns.js"></script>
 </body>
 </html>
