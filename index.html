@@ -18,7 +18,7 @@
   <div>
     <h1>Akuzipik Wordbuilder</h1>
     <div id="phraseTypeChoices">
-      <input type="radio" id="np" name="phraseType" value="NP" checked>
+      <input type="radio" id="np" name="phraseType" value="NP">
       <label for="np">Build a Noun Phrase</label><br>
       <input type="radio" id="vp" name="phraseType" value="VP">
       <label for="vp">Build a Verb Phrase</label><br>
@@ -27,7 +27,9 @@
       <input type="radio" id="cp" name="phraseType" value="CP">
       <label for="cp">Give a Command</label><br>
     </div>
-    <div id="builderContainer">Akuzipik Phrase goes here</div>
+    <div id="builderContainer">
+      <div id="output">Akuzipik Phrase goes here</div>
+    </div>
     <div id="dropdownContainer">
       <div id="verbDropdowns" class="dropdowns" style="display:none;">
         <select name="verb" id="vPerNumSelect"></select>
@@ -40,8 +42,11 @@
         <select name="noun" id="nBaseSelect"></select>
       </div>
     </div>
+    <div id="buttonContainer">
+      <button onclick="testWordBuilder()">Build Phrase</button>
+    </div>
   </div>
-  <script src="builder.js"></script>
   <script src="dropdowns.js"></script>
+  <script src="builder.js"></script>
 </body>
 </html>
