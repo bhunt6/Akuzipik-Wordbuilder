@@ -15,38 +15,48 @@
     <meta name="theme-color" content="#b0e0e6">
 </head>
 <body>
-  <div>
+  <div class="centered-box">
     <h1>Akuzipik Wordbuilder</h1>
     <div id="phraseTypeChoices">
-      <input type="radio" id="np" name="phraseType" value="NP">
-      <label for="np">Build a Noun Phrase</label><br>
-      <input type="radio" id="vp" name="phraseType" value="VP">
-      <label for="vp">Build a Verb Phrase</label><br>
-      <input type="radio" id="qp" name="phraseType" value="QP">
-      <label for="qp">Ask a Question</label><br>
-      <input type="radio" id="cp" name="phraseType" value="CP">
-      <label for="cp">Give a Command</label><br>
+      <div class="radioGroup">
+        <input type="radio" id="np" name="phraseType" value="NP" class="radio">
+        <label for="np">Build a Noun Phrase</label><br>
+      </div>
+      <div class="radioGroup">
+        <input type="radio" id="vp" name="phraseType" value="VP" class="radio">
+        <label for="vp">Build a Verb Phrase</label><br>
+      </div>
+      <div class="radioGroup">
+        <input type="radio" id="qp" name="phraseType" value="QP" class="radio">
+        <label for="qp">Ask a Question</label><br>
+      </div>
+      <div class="radioGroup">
+        <input type="radio" id="cp" name="phraseType" value="CP" class="radio">
+        <label for="cp">Give a Command</label><br>
+      </div>
     </div>
-    <div id="builderContainer">
-      <div id="output">Akuzipik Phrase goes here</div>
+    <div id="builderContainer" class="builderContainer">
+      <div id="output" class="output"></div>
     </div>
     <div id="dropdownContainer">
-      <div id="verbDropdowns" class="dropdowns" style="display:none;">
-        <select name="verb" id="vPerNumSelect"></select>
-        <select name="verb" id="vBaseSelect"></select>
+      <div id="verbDropdowns" class="dropdownSet" style="display:none;">
+        <select name="verb" id="vPerNumSelect" class="dropdown"></select>
+        <select name="verb" id="vBaseSelect" class="dropdown"></select>
       </div>
-      <div id="nounDropdowns" class="dropdowns" style="display: block;">
-        <select name="noun" id="nCaseSelect"></select>
-        <select name="noun" id="nDetSelect"></select>
-        <select name="noun" id="nNumSelect"></select>
-        <select name="noun" id="nBaseSelect"></select>
+      <div id="nounDropdowns" class="dropdownSet" style="display: none;">
+        <select name="noun" id="nCaseSelect" class="dropdown"></select>
+        <select name="noun" id="nDetSelect" class="dropdown"></select>
+        <select name="noun" id="nNumSelect" class="dropdown"></select>
+        <select name="noun" id="nBaseSelect" class="dropdown"></select>
       </div>
     </div>
     <div id="buttonContainer">
-      <button onclick="testWordBuilder()">Build Phrase</button>
+      <button id="buildButton" onclick="testWordBuilder()"style="display: none;">Build Phrase</button>
     </div>
   </div>
-  <script src="dropdowns.js"></script>
-  <script src="builder.js"></script>
+  <script src="JS/dropdowns.js"></script>
+  <script src="JS/builder.js"></script>
+  <script src="JS/m2s.js"></script>
+  <script src="JS/foma_apply_down.js"></script>
 </body>
 </html>
