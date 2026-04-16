@@ -1,15 +1,14 @@
 const vBases = {
-    "qavagh(V)": "sleep",
-    "negh(V)": "eat",
-    "aane(V)": "arrive",
-
+    "sleep": "qavagh(V)",
+    "eat": "negh(V)",
+    "arrive": "aane(V)"
 }
 
 const nBases = {
-    "nuna(N)": "land",
-    "qayaq(N)": "kayak",
-    "quynik(N)": "caribou",
-    "sikik(N)": "squirrel"
+    "land": "nuna(N)",
+    "kayak": "qayaq(N)",
+    "caribou": "quynik(N)",
+    "squirrel": "sikik(N)"
 }
 
 const vPerNumOptions = {
