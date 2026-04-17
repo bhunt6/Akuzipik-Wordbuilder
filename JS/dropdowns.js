@@ -56,8 +56,8 @@ const detOptions = {
 }
 
 const nCaseOptions = {
-    "the...": ["", "[Abs."], //absolutive
-    "the (relative)...": ["(Relative Case)", "[Rel."], //relative/ergative
+    "...": ["", "[Abs."], //absolutive
+    "of (relative)...": ["(Relative Case)", "[Rel."], //relative/ergative
     "from...": ["from", "[Abl_Mod."], //ablative-modalis
     "at/in...": ["at/in", "[Loc."], //localis
     "to...": ["to", "[All."], //terminalis
