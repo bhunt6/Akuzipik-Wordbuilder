@@ -7,20 +7,20 @@ const vBases = {
 const nBases = {
     "land": "nuna(N)",
     "kayak": "qayaq(N)",
-    "reindeer": "quyngiq(N)",
-    "squirrel": "sikik(N)",
-    "walrus": "ayveq(N)",
-    "knife": "savik(N)",
-    "house": "mangteghaq(N)",
-    "dog": "qikmiq(N)",
-    "son": "ighneq(N)",
-    "daughter": "panik(N)",
+    "reindeer": "quyngigh(N)",
+    "squirrel": "sikig(N)",
+    "walrus": "ayvegh(N)",
+    "knife": "savig(N)",
+    "house": "mangteghagh(N)",
+    "dog": "qikmigh(N)",
+    "son": "ighnegh(N)",
+    "daughter": "panig(N)",
     "mother": "naa(N)",
     "father": "ata(N)",
-    "child": "taghnughhaq(N)",
-    "food": "neq(N)",
-    "water": "meq(N)",
-    "boat": "angyaq(N)"
+    "child": "taghnughhagh(N)",
+    "food": "negh(N)",
+    "water": "megh(N)",
+    "boat": "angyagh(N)"
 }
 
 const vPerNumOptions = {
@@ -44,15 +44,15 @@ const nNumOptions = {
 //Want to add demonstratives here as well e.g. "una", "taana", etc.
 const detOptions = {
     "the": "",
-    "my": "Poss1Sg.",
-    "your": "Poss2Sg.",
-    "his/her/its": "Poss3Sg.",
-    "our (2)": "Poss1Du.",
-    "your (2)": "Poss2Du.",
-    "their (2)": "Poss3Du.",
-    "our (3+)": "Poss1Pl.",
-    "your (3+)": "Poss2Pl.",
-    "their (3+)": "Poss3Pl.",
+    "my": "1SgPoss.",
+    "your": "2SgPoss.",
+    "his/her/its": "3SgPoss.",
+    "our (2)": "1DuPoss.",
+    "your (2)": "2DuPoss.",
+    "their (2)": "3DuPoss.",
+    "our (3+)": "1PlPoss.",
+    "your (3+)": "2PlPoss.",
+    "their (3+)": "3PlPoss.",
 }
 
 const nCaseOptions = {
@@ -61,6 +61,6 @@ const nCaseOptions = {
     "from...": "[Abl_Mod.", //ablative-modalis
     "at/in...": "[Loc.", //localis
     "to...": "[All.", //terminalis
-    "through...": "[Perl.", //vialis
+    "through...": "[Prl.", //vialis
     "like...": "[Equ." //equalis
 }
