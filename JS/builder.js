@@ -56,7 +56,7 @@ function nounDropdowns(){
     nCaseSelect.innerHTML = '';
     for (let [key, value] of Object.entries(nCaseOptions)) {
         let option = document.createElement('option');
-        option.value = value;
+        option.value = value[1];
         option.textContent = key;
         nCaseSelect.appendChild(option);
     }
@@ -132,19 +132,28 @@ class wordBuilder {
      //Call foma apply down
     callFomaDown(tagSequence){
         console.log("Calling foma apply down with tag sequence:", tagSequence);
-        const surface = foma_apply_down(m2s, tagSequence);
+        tagSequence = this.handleTagReplacements(tagSequence);
+        const tagWithBase = `${this.base}^${tagSequence}`;
+        console.log("Tag sequence with base:", tagWithBase);
+        const surface = foma_apply_down(m2s, tagWithBase);
         console.log("Foma output:", surface);
         return surface[0] != undefined ? surface[0].toLowerCase() : "Something went wrong"; // Assuming we want the first result and convert to lowercase
     }
 
     handleTagReplacements(tagSequence){
-        
+        if (verbExceptions.hasOwnProperty(tagSequence)) {
+            tagSequence = verbExceptions[tagSequence];
+        }
+        return tagSequence;
     }
 
     //Temp output method to test parameters are being passed correctly
     printPhrase(){
-        return this.type === 'NP' ? this.callFomaDown(`${this.base}^${this.nCase}${this.det}${this.perNum}`) 
-                                    : this.callFomaDown(`${this.base}^${this.mood}^${this.perNum}`);
+        return this.type === 'NP' ? this.callFomaDown(`${this.nCase}${this.det}${this.perNum}`) 
+                                    : this.type === 'VP' ? this.callFomaDown(`${this.mood}^${this.perNum}`) 
+                                    : this.type === 'QP' ? this.callFomaDown(`${this.mood}^${this.perNum}`) + "?"
+                                    : this.type === 'CP' ? this.callFomaDown(`${this.mood}^${this.perNum}`) + "!"
+                                    : "Invalid phrase type";
     }
 
     //Build English translation

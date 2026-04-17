@@ -56,11 +56,28 @@ const detOptions = {
 }
 
 const nCaseOptions = {
-    "the...": "[Abs.", //absolutive
-    "the...(rel)": "[Rel.", //relative/ergative
-    "from...": "[Abl_Mod.", //ablative-modalis
-    "at/in...": "[Loc.", //localis
-    "to...": "[All.", //terminalis
-    "through...": "[Prl.", //vialis
-    "like...": "[Equ." //equalis
+    "the...": ["", "[Abs."], //absolutive
+    "the (relative)...": ["(Relative Case)", "[Rel."], //relative/ergative
+    "from...": ["from", "[Abl_Mod."], //ablative-modalis
+    "at/in...": ["at/in", "[Loc."], //localis
+    "to...": ["to", "[All."], //terminalis
+    "through...": ["through", "[Prl."], //vialis
+    "like...": ["like", "[Equ."] //equalis
 }
+
+const verbExceptions = {
+    '[Intrg.Intr]^[2Sg]':'[Intrg.Intr.2Sg]',
+    '[Intrg.Intr]^[2Pl]':'[Intrg.Intr.2Pl]',
+    '[Intrg.Intr]^[2Du]':'[Intrg.Intr.2Du]',
+    '[Opt.Pres.Intr]^[2Sg]':'[Opt.Pres.Intr.2Sg]',
+    '[Opt.Pres.Trns]^[2Sg.3Sg]':'[Opt.Pres.Trns.2Sg.3Sg]',
+    '[Opt.Neg.Pres.Trns]^[2Sg.3Pl]':'[Opt.Neg.Pres.Trns.2Sg.3Pl]',
+    '[Opt.Neg.Pres.Trns]^[2Pl.3Pl]':'[Opt.Neg.Pres.Trns.2Pl.3Pl]',
+    '[Opt.Neg.Pres.Trns]^[2Du.3Pl]':'[Opt.Neg.Pres.Trns.2Du.3Pl]'
+}
+
+
+//Possible noun exceptions
+//'[All.2DuPoss.Du]' <- doesn't produce a surface form
+//'[Equ.Sg.3SgPoss]' <- this one has a flipped possessive marker
+//'[Equ.Sg.3PlPoss]' <- this one has a flipped possessive marker
