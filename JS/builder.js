@@ -126,65 +126,74 @@ class wordBuilder {
                     : obj.phraseType === 'QP' ? "[Intrg.Intr]"
                     : obj.phraseType === 'CP' ? "[Opt.Pres.Intr]"
                     : "";
+        this.phrase = ""; //Generated phrase based on type and parameters
     }
 
-    //temp output method to test parameters are being passed correctly
+     //Call foma apply down
+    callFomaDown(tagSequence){
+        console.log("Calling foma apply down with tag sequence:", tagSequence);
+        const surface = foma_apply_down(m2s, tagSequence);
+        console.log("Foma output:", surface);
+        return surface[0] != undefined ? surface[0].toLowerCase() : "Something went wrong"; // Assuming we want the first result and convert to lowercase
+    }
+
+    handleTagReplacements(tagSequence){
+        
+    }
+
+    //Temp output method to test parameters are being passed correctly
     printPhrase(){
-        return this.type === 'NP' ? `${this.base}^${this.nCase}${this.det}${this.perNum}` : `${this.base}^${this.mood}^${this.perNum}`;
+        return this.type === 'NP' ? this.callFomaDown(`${this.base}^${this.nCase}${this.det}${this.perNum}`) 
+                                    : this.callFomaDown(`${this.base}^${this.mood}^${this.perNum}`);
     }
 
-    // Call foma apply down
-    applyFomaDown(){
-        // TODO: Interface with foma tool
-    }
-
-    // Build English translation
+    //Build English translation
     buildTranslation(){
         return "English translation placeholder";
-        // TODO: Generate English translation
+        //TODO: Generate English translation
     }
 
-    // Color segmentation
+    //Color segmentation
     colorSegmentation(){
-        // TODO: Apply color coding to morphological segments
+        //TODO: Apply color coding to morphological segments
     }
 }
 
-class verbPhrase {
-    constructor(vpType, vBase, defaultPerson, defaultNumber){
-        this.vpType = vpType;
-        this.vBase = vBase;
-        this.defaultPerson = defaultPerson;
-        this.defaultNumber = defaultNumber;
-    }
+// class verbPhrase {
+//     constructor(vpType, vBase, defaultPerson, defaultNumber){
+//         this.vpType = vpType;
+//         this.vBase = vBase;
+//         this.defaultPerson = defaultPerson;
+//         this.defaultNumber = defaultNumber;
+//     }
 
-    phraseType(){
-        // TODO: Determine and return phrase type
-    }
+//     phraseType(){
+//         //TODO: Determine and return phrase type
+//     }
 
-        // Verb phrase controller methods
-    indicative(){
-        // TODO: Handle indicative mood
-    }
+//         //Verb phrase controller methods
+//     indicative(){
+//         //TODO: Handle indicative mood
+//     }
 
-    interrogative(){
-        // TODO: Handle interrogative mood
-    }
+//     interrogative(){
+//         //TODO: Handle interrogative mood
+//     }
 
-    optative(){
-        // TODO: Handle optative mood
-    }
-}
+//     optative(){
+//         //TODO: Handle optative mood
+//     }
+// }
 
-class nounPhrase {
-    constructor(nBase, defaultPerson, defaultNumber, defaultDeterminative, nounCase){
-        this.nBase = nBase;
-        this.defaultPerson = defaultPerson;
-        this.defaultNumber = defaultNumber;
-        this.defaultDeterminative = defaultDeterminative;
-        this.nounCase = nounCase;
-    }
-}
+// class nounPhrase {
+//     constructor(nBase, defaultPerson, defaultNumber, defaultDeterminative, nounCase){
+//         this.nBase = nBase;
+//         this.defaultPerson = defaultPerson;
+//         this.defaultNumber = defaultNumber;
+//         this.defaultDeterminative = defaultDeterminative;
+//         this.nounCase = nounCase;
+//     }
+// }
 
 // Add event listeners to radio buttons
 document.querySelectorAll('input[name="phraseType"]').forEach(radio => {
