@@ -1,7 +1,13 @@
 const vBases = {
     "sleep": "qavagh(V)",
     "eat": "negh(V)",
-    "arrive": "aane(V)"
+    "arrive": "aane(V)",
+    "come": "tagi(V)",
+    "see": "esghagh(V)",
+    "cook": "gaagh(V)",
+    "drink a hot beverage": "qayugh(V)",
+    "drink a cold beverage": "megh(V)",
+    "feel happy": "quya(V)",
 }
 
 const nBases = {
