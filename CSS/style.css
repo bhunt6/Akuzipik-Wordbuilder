@@ -91,6 +91,12 @@ button:hover {
     text-align: center;
 }
 
+.englishOutput {
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
 select {
     min-height: 3rem;
     padding: 0.65rem 2.5rem 0.65rem 0.9rem;
@@ -140,5 +146,23 @@ label {
 }
 
 #dropdownContainer {
+    position:relative;
     display: inline-block;
+}
+.englishTransCont{
+    /* position: absolute;
+    z-index: 999; */
+    width: 100%;
+    height: 3rem;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.englishTrans{
+    display: none;
+    height: inherit;
+    width: 5rem;
+    background: #ef9d87;
 }
