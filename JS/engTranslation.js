@@ -4,9 +4,8 @@ class engTranslation {
         this.engPerNum = obj.engPerNum;
         this.engDet = obj.engDet;
         this.engCase = obj.engCase;
-        this.engBase = obj.engBase;
+        this.engBase = obj.engBase.split(" ");
         this.phraseType = phraseType;
-        this.questionVForm = this.verbForm();
         this.vForm = this.verbForm();
         this.auxForm = this.aux();
         this.pluralForm = this.pluralize();
@@ -21,23 +20,28 @@ class engTranslation {
     }
 
     verbForm() {
+        let base = this.engBase[0]; // Assuming the verb is the first word in engBase
+        let tempEngBase = this.engBase // The rest of the words in engBase, if any
+        tempEngBase.splice(0,1); // Remove the verb from tempEngBase
+        console.log("base:", base);
+        console.log("tempbase:", tempEngBase);
         if (this.phraseType === 'VP') {
             if (this.engPerNum === 'he/she/it') {
-                if (this.engBase.endsWith('s') || this.engBase.endsWith('x') || this.engBase.endsWith('z') || this.engBase.endsWith('ch') || this.engBase.endsWith('sh')) {
-                    return this.engBase + 'es';
+                if (base.endsWith('s') || base.endsWith('x') || base.endsWith('z') || base.endsWith('ch') || base.endsWith('sh')) {
+                    return base + 'es ' + tempEngBase.join(' ');
                 } else {
-                    return this.engBase + 's';
+                    return base + 's ' + tempEngBase.join(' ');
                 }
             } else {
-                return this.engBase;
+                return base + " " + tempEngBase.join(' ');
             }
         } else if (this.phraseType === 'QP') {
-            if(this.engBase.endsWith('e')) {
-                return this.engBase.slice(0, -1) + 'ing';
+            if(base.endsWith('e') && !base.endsWith('ee')) {
+                return base.slice(0, -1) + 'ing ' + tempEngBase.join(' ');
             }
-            return this.engBase + "ing";
+            return base + 'ing ' + tempEngBase.join(' ');
         } else {
-            return this.engBase;
+            return base + " " + tempEngBase.join(' ');
         }
     }
     
@@ -61,7 +65,7 @@ class engTranslation {
         } else if (this.phraseType === 'QP') {
             return `${this.auxForm.split(' ').map(i => i[0].toUpperCase() + i.substring(1).toLowerCase()).join(' ')} ${this.engPerNum} ${this.vForm}?`;
         } else if (this.phraseType === 'CP') {
-            return `(${this.engPerNum}) ${this.engBase}!`;
+            return `(${this.engPerNum}) ${this.vForm}!`;
         }
     }
 }
