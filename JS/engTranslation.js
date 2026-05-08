@@ -6,9 +6,9 @@ class engTranslation {
         this.engCase = obj.engCase;
         this.engBase = obj.engBase.split(" ");
         this.phraseType = phraseType;
+        this.pluralForm = this.pluralize();
         this.vForm = this.verbForm();
         this.auxForm = this.aux();
-        this.pluralForm = this.pluralize();
         this.fullEngPhrase = this.constructPhrase();
     }
 
@@ -21,8 +21,7 @@ class engTranslation {
 
     verbForm() {
         let base = this.engBase[0]; // Assuming the verb is the first word in engBase
-        let tempEngBase = this.engBase // The rest of the words in engBase, if any
-        tempEngBase.splice(0,1); // Remove the verb from tempEngBase
+        let tempEngBase = this.engBase.slice(1); // The rest of the words in engBase, if any
         console.log("base:", base);
         console.log("tempbase:", tempEngBase);
         if (this.phraseType === 'VP') {
@@ -63,9 +62,9 @@ class engTranslation {
         } else if (this.phraseType === 'VP') {
             return `${this.engPerNum} ${this.vForm}`;
         } else if (this.phraseType === 'QP') {
-            return `${this.auxForm.split(' ').map(i => i[0].toUpperCase() + i.substring(1).toLowerCase()).join(' ')} ${this.engPerNum} ${this.vForm}?`;
+            return `${this.auxForm.split(' ').map(i => i[0].toUpperCase() + i.substring(1).toLowerCase()).join(' ')} ${this.engPerNum} ${this.vForm.trimEnd()}?`;
         } else if (this.phraseType === 'CP') {
-            return `(${this.engPerNum}) ${this.vForm}!`;
+            return `(${this.engPerNum}) ${this.vForm.trimEnd()}!`;
         }
     }
 }
