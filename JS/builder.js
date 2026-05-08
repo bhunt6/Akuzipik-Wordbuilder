@@ -83,17 +83,21 @@ function nounDropdowns(){
 function phraseChoice(){
     const phraseType = document.querySelector('input[name="phraseType"]:checked').value;
     let outputDiv = document.getElementById('output');
+    let engOutputDiv = document.getElementById('englishOutput');
     outputDiv.textContent = ''; // Clear previous output
-    let buildButton = document.getElementById('buildButton');
-    buildButton.style.display = 'block'; // Show build button when a phrase type is selected
+    engOutputDiv.textContent = ''; // Clear previous English output
+    // let buildButton = document.getElementById('buildButton');
+    // buildButton.style.display = 'block'; // Show build button when a phrase type is selected
     if (phraseType === 'NP') {
         document.getElementById('verbDropdowns').style.display = 'none';
         document.getElementById('nounDropdowns').style.display = 'block';
         nounDropdowns(); // Populate noun dropdowns with appropriate options
+        testWordBuilder(); // Call test function to update output when phrase type changes
     } else {
         document.getElementById('verbDropdowns').style.display = 'block';
         document.getElementById('nounDropdowns').style.display = 'none';
         verbDropdowns(); // Populate verb dropdowns with appropriate options
+        testWordBuilder(); // Call test function to update output when phrase type changes
     }
 }
 
@@ -108,7 +112,7 @@ function getSelectedOptions(phraseType) {
     const engBase = phraseType === 'NP' ? Object.keys(nBases).find(key => nBases[key] === base) : Object.keys(vBases).find(key => vBases[key] === base);
     const engPerNum = phraseType === 'NP' ? Object.keys(nNumOptions).find(key => nNumOptions[key] === perNum) : Object.keys(vPerNumOptions).find(key => vPerNumOptions[key] === perNum);
     const engDet = phraseType === 'NP' ? Object.keys(detOptions).find(key => detOptions[key] === det) : "";
-    const engCase = phraseType === 'NP' ? Object.keys(nCaseOptions).find(key => nCaseOptions[key] === nCase) : "";
+    const engCase = phraseType === 'NP' ? nCaseOptions[Object.keys(nCaseOptions).find(key => nCaseOptions[key][1] === nCase)][0] : "";
 
     return { phraseType, base, perNum, det, nCase, eng: { engPerNum, engDet, engCase, engBase } };
 }
@@ -126,7 +130,7 @@ class wordBuilder {
                     : obj.phraseType === 'QP' ? "[Intrg.Intr]"
                     : obj.phraseType === 'CP' ? "[Opt.Pres.Intr]"
                     : "";
-        this.phrase = ""; //Generated phrase based on type and parameters
+        this.engphrase = this.buildTranslation() //Generated phrase based on type and parameters
     }
 
      //Call foma apply down
@@ -158,8 +162,8 @@ class wordBuilder {
 
     //Build English translation
     buildTranslation(){
-        return "English translation placeholder";
-        //TODO: Generate English translation
+        const engTrans = new engTranslation(this.eng, this.type);
+        return engTrans.fullEngPhrase;
     }
 
     //Color segmentation
@@ -209,6 +213,10 @@ document.querySelectorAll('input[name="phraseType"]').forEach(radio => {
     radio.addEventListener('change', phraseChoice);
 });
 
+document.querySelectorAll('select').forEach(select => {
+    select.addEventListener('change', testWordBuilder);
+});
+
 function testWordBuilder() {
     const phraseType = document.querySelector('input[name="phraseType"]:checked').value;
     const outputDiv = document.getElementById('output');
@@ -216,4 +224,6 @@ function testWordBuilder() {
     const phrase = new wordBuilder(options);
     console.log("Testing word builder...", phrase);
     outputDiv.textContent = phrase.printPhrase();
+    const engOutputDiv = document.getElementById('englishOutput');
+    engOutputDiv.textContent = phrase.engphrase;
 }

@@ -23,16 +23,35 @@ const nBases = {
     "boat": "angyagh(N)"
 }
 
+const nPlurals = {
+    "land": "lands",
+    "kayak": "kayaks",
+    "reindeer": "reindeer",
+    "squirrel": "squirrels",
+    "walrus": "walruses",
+    "knife": "knives",
+    "house": "houses",
+    "dog": "dogs",
+    "son": "sons",
+    "daughter": "daughters",
+    "mother": "mothers",
+    "father": "fathers",
+    "child": "children",
+    "food": "foods",
+    "water": "waters",
+    "boat": "boats"
+}
+
 const vPerNumOptions = {
     "I": "[1Sg]",
-    "You": "[2Sg]",
-    "He/she/it": "[3Sg]",
-    "We (2)": "[1Du]",
-    "You (2)": "[2Du]",
-    "They (2)": "[3Du]",
-    "We (3+)": "[1Pl]",
-    "You (3+)": "[2Pl]",
-    "They (3+)": "[3Pl]"
+    "you": "[2Sg]",
+    "he/she/it": "[3Sg]",
+    "we (2)": "[1Du]",
+    "you (2)": "[2Du]",
+    "they (2)": "[3Du]",
+    "we (3+)": "[1Pl]",
+    "you (3+)": "[2Pl]",
+    "they (3+)": "[3Pl]"
 }
 
 const nNumOptions = {
